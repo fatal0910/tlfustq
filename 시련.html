@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클릭 카운터</title>
+</head>
+<body>
+    <button id="clickButton">클릭!</button>
+    <p id="clickCount">클릭 횟수: 0</p>
+
+    <script>
+        const button = document.getElementById("clickButton");
+        const clickCountDisplay = document.getElementById("clickCount");
+
+        // 로컬 저장소에서 클릭 횟수 가져오기
+        let clickCount = localStorage.getItem("clickCount") || 0;
+        clickCountDisplay.textContent = `클릭 횟수: ${clickCount}`;
+
+        // 버튼 클릭 시 클릭 횟수 업데이트
+        button.addEventListener("click", () => {
+            clickCount++;
+            localStorage.setItem("clickCount", clickCount);
+            clickCountDisplay.textContent = `클릭 횟수: ${clickCount}`;
+        });
+    </script>
+</body>
+</html>
